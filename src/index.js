@@ -5,12 +5,11 @@ import ReactDOM from 'react-dom'
 // ReactDOM里有一个render方法，功能就是把组件渲染并且构造DOM树，然后插入到页面上某个特定的元素上
 // 例如把123456渲染到root节点上:ReactDOM.render("123456", document.getElementById('root'))，呈现效果：<div id="root">123456</div>
 // ReactDOM.render(<div>123456</div>, document.getElementById('root'))  呈现效果：<div id="root"><div>123456</div></div>
+import {createRoot} from "react-dom/client";
+import App from "./01-base/01-class组件";
 
 
-ReactDOM.render(
-// 这里就比较奇怪了，它并不是一个字符串，看起来像是纯 HTML 代码写在 JavaScript 代码里面。语法错误吗？这并不是合法的 JavaScript 代码, “在 JavaScript 写的标签的”语法叫 JSXJavaScriptXML。
-<h1>欢迎进入React的世界</h1>,
-// 渲染到哪里
-    document.getElementById('root')
-)
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App/>)
 
