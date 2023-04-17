@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom'
 // 例如把123456渲染到root节点上:ReactDOM.render("123456", document.getElementById('root'))，呈现效果：<div id="root">123456</div>
 // ReactDOM.render(<div>123456</div>, document.getElementById('root'))  呈现效果：<div id="root"><div>123456</div></div>
 import {createRoot} from "react-dom/client";
-import App from "./01-base/01-class组件";
+import App from "./01-base/02-函数式组件";
 
 
 const container = document.getElementById('root');
