@@ -27,11 +27,9 @@ export default class App extends Component {
         this.setState({
             isCollect: !this.state.isCollect,
             userName: 'zhangsan'
+        }, () => {
+            console.log('setState内回调', this.state.userName)
         })
-        if (this.state.isCollect) {
-            console.log("完成收藏的逻辑，给后端发送信息")
-        } else {
-            console.log("完成取消收藏的逻辑，给后端发送信息")
-        }
+        console.log('setState外调用', this.state.userName)
     }
 }
