@@ -1,6 +1,11 @@
-.active{
+.active {
     background: aqua;
 }
-#myApp{
+
+#myApp {
     background: burlywood;
+}
+
+.hidden {
+    display: none;
 }
