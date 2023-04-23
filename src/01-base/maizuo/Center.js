@@ -8,5 +8,4 @@ export default class Center extends Component {
             </div>
         )
     }
-
 }
