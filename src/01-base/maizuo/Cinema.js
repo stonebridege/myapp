@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 //1.先引入axios库
 import axios from "axios";
-
 export default class Cinema extends Component {
     //2.在constructor中定义所需数据
     constructor() {
