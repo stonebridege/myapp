@@ -3,11 +3,17 @@ import Navbar from "./Navbar/Navbar";
 
 export default class Props extends Component {
     render() {
+        var propsSet = {
+            'title': '首页',
+            'leftshow': false,
+            'rightShow': true
+        }
+
         return (
             <div>
                 <div>
                     <h2>首页</h2>
-                    <Navbar title='首页' leftshow={false} rightShow={true}></Navbar>
+                    <Navbar title='首页' {...propsSet}></Navbar>
                 </div>
 
                 {/*<div>*/}
