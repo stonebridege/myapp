@@ -9,6 +9,9 @@ export default class App extends Component {
             filmList: [],
             info: ''
         }
+    }
+
+    componentDidMount() {
         axios.get(`/test.json`).then(res => {
             this.setState({
                 filmList: res.data.data.films
