@@ -12,6 +12,7 @@ class Box extends Component {
          * 如果：this.props.index === this.props.current 成立（该组件的序号和原先被选择的组件序号相同），说明此时可能已经选别的组件了，因此需要重新渲染
          * 如果：this.props.index === nextProps.current 成立（该组件的序号和新选择的组件序号相同），说明该组件被新选中，需要重新渲染。
          */
+        console.log("this.props.index:" + this.props.index + ";this.props.current" + this.props.current + ";nextProps.current:" + nextProps.current);
         if (this.props.index === this.props.current || this.props.index === nextProps.current) {
             return true
         } else {
@@ -19,12 +20,16 @@ class Box extends Component {
         }
     }
 
+    /**
+     * 在render中进行this.props.index === this.props.current的判断；
+     * 此时的this.props.current不是shouldComponentUpdate中的this.props.current，而是nextProps.current，即组件中props中真正的current
+     * @returns {JSX.Element}
+     */
     render() {
-        console.log("render")
         return <div style={{
             width: "100px",
             height: "100px",
-            border: this.props.current === this.props.index ? '1px solid red' : '1px solid gray',
+            border: this.props.index === this.props.current ? '1px solid red' : '1px solid gray',
             margin: "10px",
             float: 'left'
         }}>
