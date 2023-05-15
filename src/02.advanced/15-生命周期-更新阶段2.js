@@ -23,8 +23,8 @@ export default class App extends Component {
 
     /**
      * 在这里进行判断，如果老状态不不同于新状态就更新。减少无效的虚拟dom的对比，提高react的性能，
-     * @param nextProps :将更新的 props
-     * @param nextState :将更新的 state，老状态来自this.state
+     * @param nextProps :最新的 props，老属性来自this.props
+     * @param nextState :最新的 state，老状态来自this.state
      * @param nextContext
      */
     shouldComponentUpdate(nextProps, nextState, nextContext) {
