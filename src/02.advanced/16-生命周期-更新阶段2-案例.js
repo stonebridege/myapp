@@ -9,13 +9,16 @@ class Box extends Component {
      */
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         /**
-         * 如果：this.props.index === this.props.current 成立（该组件的序号和原先被选择的组件序号相同），说明此时可能已经选别的组件了，因此需要重新渲染
-         * 如果：this.props.index === nextProps.current 成立（该组件的序号和新选择的组件序号相同），说明该组件被新选中，需要重新渲染。
+         * 如果：this.props.index === this.props.current 成立
+         *      说明该组件的序号和原先被选择的组件序号相同或者首次渲染时，此时可能已经选别的组件了，因此需要后续diff比较和重新渲染。
+         * 如果：this.props.index === nextProps.current 成立
+         *      说明该组件的序号和新选择的组件序号相同，说明该组件被新选中，需要重新渲染。
          */
-        console.log("this.props.index:" + this.props.index + ";this.props.current" + this.props.current + ";nextProps.current:" + nextProps.current);
         if (this.props.index === this.props.current || this.props.index === nextProps.current) {
+            console.log("在shouldComponentUpdate函数中的判断结果：true");
             return true
         } else {
+            console.log("在shouldComponentUpdate函数中的判断结果：false");
             return false
         }
     }
@@ -36,6 +39,8 @@ class Box extends Component {
         </div>
     }
 }
+
+
 
 export default class App extends Component {
     state = {
