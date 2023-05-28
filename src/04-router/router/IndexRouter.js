@@ -13,8 +13,6 @@ export default class IndexRouter extends Component {
                     <Route path="/cinemas" component={Cinemas}/>
                     <Route path="/center" component={Center}/>
                     <Redirect from="/" to="/films"/>
-                    {/* <Redirect from="/" to="/films" exact/>
-                        <Route path="*" component={NotFound}/> */}
                 </Switch>
             </HashRouter>
         )
