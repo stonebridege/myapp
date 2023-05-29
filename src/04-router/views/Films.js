@@ -8,7 +8,7 @@ export default class Films extends Component {
         return (
             <div>
                 <div style={{height: "200px", background: "yellow"}}>大轮播</div>
-                <div>导航栏</div>
+                <div>导航栏Films</div>
                 {/* 路由配置嵌套路由 */}
                 <Switch>
                     {/*1.访问http://ip:port/#/films/nowplaying时，页面指定位置加载Nowplaying组件*/}
