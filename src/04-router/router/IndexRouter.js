@@ -12,7 +12,7 @@ export default class IndexRouter extends Component {
                 <Switch>
                     {/*一级路由执行films组件，一定不能使用exact*/}
                     <Route path="/films" component={Films}/>
-                    <Route path="/detail/:myid" component={Detail}/>
+                    <Route path="/detail" component={Detail}/>
                     <Route path="/cinemas" component={Cinemas}/>
                     <Route path="/center" component={Center}/>
                     {/* 模糊匹配 */}
