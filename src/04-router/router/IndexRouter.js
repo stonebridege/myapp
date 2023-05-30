@@ -9,7 +9,7 @@ import NotFound from '../views/NotFound'
 
 //2.判断是否存在token
 function isAuth() {
-    return localStorage.getItem("token")
+    return true
 }
 
 // BrowserRouter 没有#的路径，好看 ，真正朝后端发请求要页面，后端没有对应的路径处理路径， 就会404， 不好看。
@@ -26,9 +26,11 @@ export default class IndexRouter extends Component {
                     <Route path="/cinemas" component={Cinemas}/>
                     {/* <Route path="/center" component={Center} /> */}
                     {/*3.在render里通过判断是否进入center页面，否则通过Redirect重定向到login*/}
-                    <Route path="/center" render={() => {
-                        return isAuth() ? <Center/> : <Redirect to="/login"/>
+                    <Route path="/center" render={(props) => {
+                        console.log(props)
+                        return isAuth() ? <Center {...props}/> : <Redirect to="/login"/>
                     }}/>
+
                     {/*1.设置login路由*/}
                     <Route path="/login" component={Login}/>
                     {/* /detail/1111  动态路由 */}
