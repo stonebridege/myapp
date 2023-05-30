@@ -6,8 +6,10 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <MRouter></MRouter>
-                <Tabbar></Tabbar>
+                {/* 其他的内容 */}
+                <MRouter>
+                    <Tabbar></Tabbar>
+                </MRouter>
             </div>
         )
     }

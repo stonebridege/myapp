@@ -3,7 +3,7 @@ import React from 'react'
 export default function Center() {
     return (
         <div>
-            center
+            center111111
         </div>
     )
 }

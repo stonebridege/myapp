@@ -7,11 +7,16 @@ export default class Tabbar extends Component {
         return (
             <div>
                 <ul>
-                    <BrowserRouter>
-                        <li><NavLink to="/films" activeClassName="kerwinactive">电影</NavLink></li>
-                        <li><NavLink to="/cinemas" activeClassName="kerwinactive">影院</NavLink></li>
-                        <li><NavLink to="/center" activeClassName="kerwinactive">我的</NavLink></li>
-                    </BrowserRouter>
+                    <li>
+                        {/* <a href="#/films"></a> */}
+                        <NavLink to="/films" activeClassName="kerwinactive">电影</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/cinemas" activeClassName="kerwinactive">影院</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/center" activeClassName="kerwinactive">我的</NavLink>
+                    </li>
                 </ul>
             </div>
         );
