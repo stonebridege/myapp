@@ -17,6 +17,9 @@ export default class Tabbar extends Component {
                     <li>
                         <NavLink to="/center" activeClassName="kerwinactive">我的</NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/comingson" activeClassName="kerwinactive">即将上映</NavLink>
+                    </li>
                 </ul>
             </div>
         );

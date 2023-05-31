@@ -6,6 +6,7 @@ import Cinemas from '../views/Cinemas'
 import Center from '../views/Center'
 import Login from '../views/Login'
 import NotFound from '../views/NotFound'
+import Comingsoon from "../views/films/Comingsoon";
 
 //2.判断是否存在token
 function isAuth() {
@@ -35,6 +36,7 @@ export default class IndexRouter extends Component {
                     <Route path="/login" component={Login}/>
                     {/* /detail/1111  动态路由 */}
                     <Route path="/detail/:myid" component={Detail}/>
+                    <Route path="/comingson" component={Comingsoon}/>
                     {/* <Route path="/detail" component={Detail} /> */}
                     {/* 模糊匹配 */}
                     <Redirect from="/" to="/films" exact/>
