@@ -1,21 +1,16 @@
-/*
- * @作者: kerwin
- * @公众号: 大前端私房菜
- */
-import React,{useEffect} from 'react'
+import React, {useEffect} from 'react'
+import store from "../redux/store";
+import {showAction,hideAction} from '../redux/action'
 
 export default function Detail(props) {
-    console.log(props.match.params.myid,"利用id去后端拿数据。")
-    // console.log(props.location.query.myid,"利用id去后端拿数据。")
-    // console.log(props.location.state.myid,"利用id去后端拿数据。")
+    console.log(props.match.params.myid, "利用id去后端拿数据。")
 
     useEffect(() => {
-        // console.log("create")
-
-        //store.dispatch  通知
-
+        //1.组件打开时触发来分发action
+        store.dispatch(hideAction)
+        //2.组件关闭时触发来分发action
         return () => {
-            console.log("destroy")
+            store.dispatch(showAction)
         }
     }, [])
 
