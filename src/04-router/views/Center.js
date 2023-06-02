@@ -1,12 +1,17 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 
-export default function Center(props) {
+function Center(props) {
     return (
         <div>
             center
+
             <div onClick={() => {
                 props.history.push(`/filmsorder`)
+
             }}>电影订单</div>
         </div>
     )
 }
+
+export default withRouter(Center)

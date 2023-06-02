@@ -1,13 +1,17 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
-class Login extends Component {
+export default class Login extends Component {
     render() {
         return (
             <div>
-                <button>login</button>
+                <h1>登录页面</h1>
+                <input type="text"/>
+                <button onClick={() => {
+                    localStorage.setItem("token", "123")
+                    this.props.history.push(`/center`)
+                }}>登录
+                </button>
             </div>
-        );
+        )
     }
 }
-
-export default Login;

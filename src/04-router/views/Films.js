@@ -3,22 +3,32 @@ import Nowplaying from './films/Nowplaying'
 import Comingsoon from './films/Comingsoon'
 import {NavLink, Redirect, Route, Switch} from 'react-router-dom'
 
+import style from './css/Film.module.css'
+
+console.log(style)
 export default class Films extends Component {
     render() {
         return (
-            <div>
+            <div className={style.film + " aaaa"}>
                 <div style={{height: "200px", background: "yellow"}}>大轮播</div>
-                <div>导航栏Films</div>
-                <NavLink to='/films/comingson'>即将上映11</NavLink>
-                {/* 路由配置嵌套路由 */}
+
+                <ul>
+                    <li>
+                        <NavLink to="/films/nowplaying" activeClassName={style.kerwinactive}>正在热映</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/films/comingsoon" activeClassName={style.kerwinactive}>即将上映</NavLink>
+                    </li>
+                </ul>
+
+                {/* 路由配置 嵌套路由 */}
+                {/* <Nowplaying/> */}
                 <Switch>
-                    {/*1.访问http://ip:port/#/films/nowplaying时，页面指定位置加载Nowplaying组件*/}
                     <Route path="/films/nowplaying" component={Nowplaying}/>
-                    {/*2.访问http://ip:port/#/films/comingsoon时，页面指定位置加载Comingsoon组件*/}
                     <Route path="/films/comingsoon" component={Comingsoon}/>
-                    {/*3.访问http://ip:port/#/films*时，默认加载nowplaying组件*/}
-                    {/*<Redirect from="/films" to="/films/nowplaying"/>*/}
+                    <Redirect from="/films" to="/films/nowplaying"/>
                 </Switch>
+
             </div>
         )
     }
