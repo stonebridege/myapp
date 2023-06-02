@@ -9,7 +9,6 @@ import {NavLink, Redirect, Route, Switch} from 'react-router-dom'
 
 import style from './css/Film.module.css'
 
-console.log(style)
 export default class Films extends Component {
     render() {
         return (
