@@ -1,17 +1,14 @@
-/*
- * @作者: kerwin
- * @公众号: 大前端私房菜
- */
-import React, { Component } from 'react'
-import { HashRouter as Router,Redirect,Route,Switch} from 'react-router-dom'
+import React, {Component} from 'react'
+import {HashRouter as Router, Redirect, Route, Switch} from 'react-router-dom'
 import Films from '../views/Films'
 import Cinemas from '../views/Cinemas'
 import Center from '../views/Center'
 import Detail from '../views/Detail'
 import NotFound from '../views/NotFound'
 import Login from '../views/Login'
+import City from "../views/City";
 
-function isAuth(){
+function isAuth() {
     return localStorage.getItem("token")
 }
 
@@ -23,31 +20,32 @@ export default class IndexRouter extends Component {
             <Router>
                 {this.props.children}
                 <Switch>
-                    <Route path="/films" component={Films} />
+                    <Route path="/films" component={Films}/>
 
                     {/* <Route path="/films/nowplaying" component={Nowplaying}/> */}
 
-                    <Route path="/cinemas" component={Cinemas} />
+                    <Route path="/cinemas" component={Cinemas}/>
                     {/* <Route path="/center" component={Center} /> */}
-                    <Route path="/center" render={(props)=>{
+                    <Route path="/center" render={(props) => {
                         // console.log(props)
-                        return isAuth()?<Center myname="kerwin"/>:<Redirect to="/login"/>
+                        return isAuth() ? <Center myname="kerwin"/> : <Redirect to="/login"/>
                     }}/>
 
                     <Route path="/login" component={Login}/>
+                    <Route path="/city" component={City}/>
 
                     {/* /detail/1111  动态路由 */}
-                    <Route path="/detail/:myid" component={Detail} />
+                    <Route path="/detail/:myid" component={Detail}/>
 
                     {/* <Route path="/detail" component={Detail} /> */}
-                    
+
                     {/* 模糊匹配 */}
                     <Redirect from="/" to="/films" exact/>
 
                     {/* 精确匹配  exact */}
                     <Route component={NotFound}/>
                 </Switch>
-                
+
             </Router>
         )
     }
