@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {NavLink, Route} from 'react-router-dom'
 import Home from './components/Home/home'
 import About from './components/About/about'
+import MyNavLink from "./MyNavLink";
 
 
 export default class App extends Component {
@@ -21,8 +22,11 @@ export default class App extends Component {
                             {/* <a className="list-group-item" href="./about.html">About</a>
 							<a className="list-group-item active" href="./home.html">Home</a> */}
                             {/* 在React中靠路由链接实现切换组件--编写路由链接(引起路径变化) */}
-                            <NavLink activeClassName='stonebridgeClass' className="list-group-item" to="/about">About</NavLink>
-                            <NavLink activeClassName='stonebridgeClass' className="list-group-item" to="/home">Home</NavLink>
+                            {/*<NavLink activeClassName='stonebridgeClass' className="list-group-item" to="/about">About</NavLink>*/}
+                            {/*<NavLink activeClassName='stonebridgeClass' className="list-group-item" to="/home">Home</NavLink>*/}
+
+                            <MyNavLink to="/about">About</MyNavLink>
+                            <MyNavLink to="/home">Home</MyNavLink>
 
                         </div>
                     </div>
