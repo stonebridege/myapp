@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, createStore} from 'redux';
+import {applyMiddleware, combineReducers, createStore, compose} from 'redux';
 import CityReducer from "../reducers/CityReducer";
 import TabbarReducer from "../reducers/TabbarReducer";
 import CinemaListReducer from "../reducers/CinemaListReducer";
@@ -15,8 +15,12 @@ const reducer = combineReducers({
     TabbarReducer,
     CinemaListReducer
 })
+//调试时打开这些配置代码
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, composeEnhancers(applyMiddleware(reduxThunk, reduxPromise)))
 
-const store = createStore(reducer, applyMiddleware(reduxThunk, reduxPromise));
+//生产时打开这些代码
+// const store = createStore(reducer, applyMiddleware(reduxThunk, reduxPromise));
 
 /*
 自定义createKerwinStore实现redux的功能
