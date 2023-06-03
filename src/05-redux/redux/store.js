@@ -1,7 +1,8 @@
-import {combineReducers, createStore} from 'redux';
+import {applyMiddleware, combineReducers, createStore} from 'redux';
 import CityReducer from "../reducers/CityReducer";
 import TabbarReducer from "../reducers/TabbarReducer";
 import CinemaListReducer from "../reducers/CinemaListReducer";
+import reduxThunk from "redux-thunk";
 
 
 /**
@@ -14,7 +15,7 @@ const reducer = combineReducers({
     CinemaListReducer
 })
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(reduxThunk));
 
 /*
 自定义createKerwinStore实现redux的功能

@@ -6,7 +6,7 @@ const initialState = {
 const CinemaListReducer = (prevState = initialState, action) => {
     let newState = {...prevState}
     switch (action.type) {
-        case "change-cinemalist":
+        case "change-list":
             newState.list = action.payload
             return newState
         default:
