@@ -6,7 +6,7 @@ import store from "./redux/store";
 
 export default class App extends Component {
     state = {
-        isShow: store.getState().show
+        isShow: true
     }
 
     /**
