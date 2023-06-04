@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Redirect, Route, Switch} from 'react-router-dom'
+import {NavLink, Redirect, Route, Switch} from 'react-router-dom'
 import Home from './components/Home/home'
 import About from './components/About/about'
 import MyNavLink from "./MyNavLink";
@@ -17,17 +17,8 @@ export default class App extends Component {
                 <div className="row">
                     <div className="col-xs-2 col-xs-offset-2">
                         <div className="list-group">
-
-                            {/* 原生html中，靠<a>跳转不同的页面 */}
-                            {/* <a className="list-group-item" href="./about.html">About</a>
-							<a className="list-group-item active" href="./home.html">Home</a> */}
-                            {/* 在React中靠路由链接实现切换组件--编写路由链接(引起路径变化) */}
-                            {/*<NavLink activeClassName='stonebridgeClass' className="list-group-item" to="/about">About</NavLink>*/}
-                            {/*<NavLink activeClassName='stonebridgeClass' className="list-group-item" to="/home">Home</NavLink>*/}
-
-                            <MyNavLink to="/about">About</MyNavLink>
-                            <MyNavLink to="/home">Home</MyNavLink>
-
+                            <NavLink activeClassName='stonebridgeClass' className="list-group-item" to="/about">About</NavLink>
+                            <NavLink activeClassName='stonebridgeClass' className="list-group-item" to="/home">Home</NavLink>
                         </div>
                     </div>
                     <div className="col-xs-6">
@@ -36,8 +27,8 @@ export default class App extends Component {
                                 <Switch>
                                     {/* 注册路由 */}
                                     <Route path="/about" component={About}/>
-                                    <Route exact path="/home" component={Home}/>
-                                    <Redirect to="/home"/>
+                                    <Route path="/home" component={Home}/>
+                                    <Redirect to="/about"/>
                                 </Switch>
                             </div>
                         </div>
