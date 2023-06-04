@@ -22,10 +22,10 @@ export default class Detail extends Component {
         // const {id, title} = this.props.match.params
 
         //接收search参数
-        const {id, title} = qs.parse((this.props.location.search).slice(1))
+        // const {id, title} = qs.parse((this.props.location.search).slice(1))
 
         //接收state参数
-        // const {id, title} = this.props.location.state || {}
+        const {id, title} = this.props.location.state || {}
         const findResult = DetailData.find((detailObj) => {
             return detailObj.id === id
         }) || {}
