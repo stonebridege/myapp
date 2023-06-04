@@ -42,6 +42,19 @@ export default class News extends Component {
     }
 
 
+    back = ()=>{
+        this.props.history.goBack()
+    }
+
+    forward = ()=>{
+        this.props.history.goForward()
+    }
+
+    go = ()=>{
+        this.props.history.go(-2)
+    }
+
+
     render() {
         return (
             <div>
@@ -78,6 +91,11 @@ export default class News extends Component {
 
                 {/*传递state参数的方式：注册路由正常书写*/}
                 <Route path="/home/news/detail" component={Detail}></Route>
+
+                <button onClick={this.back}>回退</button>&nbsp;
+                <button onClick={this.forward}>前进</button>&nbsp;
+                <button onClick={this.go}>go</button>
+
             </div>
         )
     }
