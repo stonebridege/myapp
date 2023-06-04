@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
-import {NavLink, Redirect, Route, Switch} from 'react-router-dom'
+import {NavLink, Redirect, Route, Switch, withRouter} from 'react-router-dom'
 import Home from './components/Home/home'
 import About from './components/About/about'
-import MyNavLink from "./MyNavLink";
 
+class App extends Component {
+    back = () => {
+        this.props.history.goBack()
+    }
 
-export default class App extends Component {
     render() {
         return (
             <div>
@@ -17,8 +19,10 @@ export default class App extends Component {
                 <div className="row">
                     <div className="col-xs-2 col-xs-offset-2">
                         <div className="list-group">
-                            <NavLink activeClassName='stonebridgeClass' className="list-group-item" to="/about">About</NavLink>
-                            <NavLink activeClassName='stonebridgeClass' className="list-group-item" to="/home">Home</NavLink>
+                            <NavLink activeClassName='stonebridgeClass' className="list-group-item"
+                                     to="/about">About</NavLink>
+                            <NavLink activeClassName='stonebridgeClass' className="list-group-item"
+                                     to="/home">Home</NavLink>
                         </div>
                     </div>
                     <div className="col-xs-6">
@@ -33,8 +37,12 @@ export default class App extends Component {
                             </div>
                         </div>
                     </div>
+                    <button onClick={this.back}>回退</button>
+                    &nbsp;
                 </div>
             </div>
         )
     }
 }
+
+export default withRouter(App)
