@@ -26,7 +26,7 @@ export default class News extends Component {
                                     {/*<Link to={`/home/news/detail?id=${item.id}&title=${item.title}`}>{item.title}</Link>*/}
 
                                     {/*传递state参数的方式：路由链接无需要携带参数*/}
-                                    <Link to={{pathname:'/home/news/detail',state:{id:item.id,title:item.title}}}>{item.title}</Link>
+                                    <Link replace to={{pathname:'/home/news/detail',state:{id:item.id,title:item.title}}}>{item.title}</Link>
                                 </li>
                             )
                         })
