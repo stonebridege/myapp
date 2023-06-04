@@ -19,13 +19,13 @@ export default class Detail extends Component {
     render() {
         console.log(this.props);
         // 传递params参数的方式：接收参数
-        // const {id, title} = qs.this.props.match.params
+        // const {id, title} = this.props.match.params
 
         //接收search参数
-        // const {id, title} = qs.parse((this.props.location.search).slice(1))
+        const {id, title} = qs.parse((this.props.location.search).slice(1))
 
         //接收state参数
-        const {id, title} = this.props.location.state || {}
+        // const {id, title} = this.props.location.state || {}
         const findResult = DetailData.find((detailObj) => {
             return detailObj.id === id
         }) || {}
