@@ -22,8 +22,11 @@ export default class News extends Component {
                                     {/*传递params参数的方式：路由链接携带参数的方式*/}
                                     {/*<Link to={`/home/news/detail/${item.id}/${item.title}`}>{item.title}</Link>*/}
 
-                                    {/*传递search参数的方式：路由无需进行其他操作*/}
-                                    <Link to={`/home/news/detail?id=${item.id}&title=${item.title}`}>{item.title}</Link>
+                                    {/*传递search参数的方式：路由链接需要携带参数*/}
+                                    {/*<Link to={`/home/news/detail?id=${item.id}&title=${item.title}`}>{item.title}</Link>*/}
+
+                                    {/*传递state参数的方式：路由链接无需要携带参数*/}
+                                    <Link to={{pathname:'/home/news/detail',state:{id:item.id,title:item.title}}}>{item.title}</Link>
                                 </li>
                             )
                         })
@@ -34,6 +37,9 @@ export default class News extends Component {
                 {/*<Route path="/home/news/detail/:id/:title" component={Detail}></Route>*/}
 
                 {/*传递search参数的方式：注册路由正常书写*/}
+                {/*<Route path="/home/news/detail" component={Detail}></Route>*/}
+
+                {/*传递state参数的方式：注册路由正常书写*/}
                 <Route path="/home/news/detail" component={Detail}></Route>
             </div>
         )
