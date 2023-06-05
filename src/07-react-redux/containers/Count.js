@@ -15,46 +15,52 @@ const mapStateToProps = state => ({count: state})
 /*
 映射操作状态的方法
 */
-const mapDispatchToProps = dispatch => ({
-    //通知redux执行加法
-    jia: (number) => {
-        dispatch(createIncrementAction(number))
-    },
-    jian: (number) => {
-        dispatch(createDecrementAction(number))
-    },
-    AsyncJia: (number, time) => {
-        dispatch(createIncrementAsyncAction(number, time))
-    }
-})
+// const mapDispatchToProps = dispatch => ({
+//     //通知redux执行加法
+//     jia: (number) => {
+//         dispatch(createIncrementAction(number))
+//     },
+//     jian: (number) => {
+//         dispatch(createDecrementAction(number))
+//     },
+//     AsyncJia: (number, time) => {
+//         dispatch(createIncrementAsyncAction(number, time))
+//     }
+// })
+
+const mapDispatchToProps = {
+    jia: createIncrementAction,
+    jian: createDecrementAction,
+    dispatch: createIncrementAsyncAction
+}
 
 
 // //使用connect()()创建并暴露一个Count的容器组件
-// const CountContainer = connect(mapStateToProps, mapDispatchToProps)(CountUI)
+const CountContainer = connect(mapStateToProps, mapDispatchToProps)(CountUI)
 //
 // //导出容器组件在页面中使用
-// export default CountContainer
+export default CountContainer
 
 
-export default connect(
-    state => ({count: state}),
-    // mapDispatchToProps的一般写法
-    // dispatch => ({
-    //     //通知redux执行加法
-    //     jia: (number) => {
-    //         dispatch(createIncrementAction(number))
-    //     },
-    //     jian: (number) => {
-    //         dispatch(createDecrementAction(number))
-    //     },
-    //     AsyncJia: (number, time) => {
-    //         dispatch(createIncrementAsyncAction(number, time))
-    //     }
-    // })
-    //mapDispatchToProps的简写,只需要提供Action，react-redux帮忙完成自动分发的操作。
-    {
-        jia: createIncrementAction,
-        jian: createDecrementAction,
-        dispatch: createIncrementAsyncAction
-    }
-)(CountUI)
+// export default connect(
+//     state => ({count: state}),
+//     // mapDispatchToProps的一般写法
+//     // dispatch => ({
+//     //     //通知redux执行加法
+//     //     jia: (number) => {
+//     //         dispatch(createIncrementAction(number))
+//     //     },
+//     //     jian: (number) => {
+//     //         dispatch(createDecrementAction(number))
+//     //     },
+//     //     AsyncJia: (number, time) => {
+//     //         dispatch(createIncrementAsyncAction(number, time))
+//     //     }
+//     // })
+//     //mapDispatchToProps的简写,只需要提供Action，react-redux帮忙完成自动分发的操作。
+//     {
+//         jia: createIncrementAction,
+//         jian: createDecrementAction,
+//         dispatch: createIncrementAsyncAction
+//     }
+// )(CountUI)
