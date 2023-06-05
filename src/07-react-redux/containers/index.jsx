@@ -1,10 +1,16 @@
 import React, {Component} from 'react'
+//引入action
+import {
+    createDecrementAction,
+    createIncrementAction,
+    createIncrementAsyncAction
+} from "../redux/count_action";
+//引入connect用于连接UI组件与redux
+import {connect} from 'react-redux'
 
-export default class Count extends Component {
-
-    /**
-     * jia()来源于容器组件的mapDispatchToProps方法
-     */
+//定义UI组件
+class Count extends Component {
+    //加法
     increment = () => {
         const {value} = this.selectNumber
         this.props.jia(value * 1)
@@ -35,6 +41,7 @@ export default class Count extends Component {
     }
 
     render() {
+        //console.log('UI组件接收到的props是',this.props);
         return (
             <div>
                 {/*'UI组件接收到的props是',this.props.count*/}
@@ -56,3 +63,13 @@ export default class Count extends Component {
         )
     }
 }
+
+//使用connect()()创建并暴露一个Count的容器组件
+export default connect(
+    state => ({count: state}),
+    {
+        jia: createIncrementAction,
+        jian: createDecrementAction,
+        jiaAsync: createIncrementAsyncAction,
+    }
+)(Count)
