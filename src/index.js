@@ -9,7 +9,7 @@ import {createRoot} from "react-dom/client";
 
 import {BrowserRouter as Router} from "react-router-dom";
 
-import App from "./04-routers/App";
+import App from "./06-antd/App";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
