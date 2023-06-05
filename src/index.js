@@ -9,8 +9,12 @@ import {createRoot} from "react-dom/client";
 
 import {BrowserRouter as Router} from "react-router-dom";
 
-import App from "./06-antd/App";
+import App from "./07-react-redux/App";
+import store from "./07-react-redux/redux/store";
 
-const container = document.getElementById('root');
-const root = createRoot(container);
-root.render(<Router><App/></Router>)
+ReactDOM.render(<App/>, document.getElementById('root'))
+
+//检测redux中任何状态的改变，如果redux的状态发生了改变，那么重新渲染App组件
+store.subscribe(() => {
+    ReactDOM.render(<App/>, document.getElementById('root'))
+})
