@@ -14,7 +14,8 @@ import store from "./07-react-redux/redux/store";
 
 ReactDOM.render(<App/>, document.getElementById('root'))
 
-//检测redux中任何状态的改变，如果redux的状态发生了改变，那么重新渲染App组件
-store.subscribe(() => {
-    ReactDOM.render(<App/>, document.getElementById('root'))
-})
+//检测redux中任何状态的改变，如果redux的状态发生了改变，那么重新渲染App组件,
+// 使用react-redux，不用在index.js里手动监测redux里state的变化，容器组件可以监测到redux里state的变化。
+// store.subscribe(() => {
+//     ReactDOM.render(<App/>, document.getElementById('root'))
+// })
