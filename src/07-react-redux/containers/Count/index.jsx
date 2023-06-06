@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 //引入action
 import {
-    createDecrementAction,
-    createIncrementAction,
-    createIncrementAsyncAction
+    decrement,
+    increment,
+    incrementAsync
 } from "../../redux/actions/count";
 //引入connect用于连接UI组件与redux
 import {connect} from 'react-redux'
@@ -13,31 +13,31 @@ class Count extends Component {
     //加法
     increment = () => {
         const {value} = this.selectNumber
-        this.props.jia(value * 1)
+        this.props.increment(value * 1)
     }
     /**
-     * jian()来源于容器组件的mapDispatchToProps方法
+     * decrement()来源于容器组件的mapDispatchToProps方法
      */
     decrement = () => {
         const {value} = this.selectNumber
-        this.props.jian(value * 1)
+        this.props.decrement(value * 1)
     }
     /**
-     * jia()来源于容器组件的mapDispatchToProps方法
+     * increment()来源于容器组件的mapDispatchToProps方法
      * count来源于容器组件的mapStateToProps方法
      */
     incrementIfOdd = () => {
         const {value} = this.selectNumber
         if (this.props.count % 2 !== 0) {
-            this.props.jia(value * 1)
+            this.props.increment(value * 1)
         }
     }
     /**
-     * 异步AsyncJia()来源于容器组件的mapDispatchToProps方法
+     * 异步incrementAsync()来源于容器组件的mapDispatchToProps方法
      */
     incrementAsync = () => {
         const {value} = this.selectNumber
-        this.props.AsyncJia(value * 1, 1000)
+        this.props.incrementAsync(value * 1, 1000)
     }
 
     render() {
@@ -45,7 +45,7 @@ class Count extends Component {
         return (
             <div>
                 {/*'UI组件接收到的props是',this.props.count*/}
-                <h1>当前求和为：{this.props.count}</h1>
+                <h1>当前求和为：{this.props.count},下方组件的总人数为:{this.props.countPerson}</h1>
                 <select ref={c => this.selectNumber = c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -59,6 +59,13 @@ class Count extends Component {
                 &nbsp;
                 <button onClick={this.incrementAsync}>异步加</button>
                 &nbsp;
+                <ul>
+                    {
+                        this.props.persons.map((item => {
+                            return <li key={item.id}>{item.name}----{item.age}</li>
+                        }))
+                    }
+                </ul>
             </div>
         )
     }
@@ -66,10 +73,15 @@ class Count extends Component {
 
 //使用connect()()创建并暴露一个Count的容器组件
 export default connect(
-    state => ({count: state}),
+    //从redux中的存储状态的map中获取指定的状态，其key为配置reducer时的状态。
+    state => ({
+        count: state.count,
+        persons: state.persons,
+        countPerson: state.persons.length
+    }),
     {
-        jia: createIncrementAction,
-        jian: createDecrementAction,
-        jiaAsync: createIncrementAsyncAction,
+        increment,
+        decrement,
+        incrementAsync,
     }
 )(Count)

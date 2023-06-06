@@ -13,4 +13,5 @@ import {Provider} from "react-redux";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
+/* 此处需要用Provider包裹App，目的是让App所有的后代容器组件都能接收到store */
 root.render(<Provider store={store}><App/></Provider>)
