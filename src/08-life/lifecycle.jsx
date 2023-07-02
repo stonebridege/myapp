@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-export default class App extends React.Component {
+export default class App extends Component {
     state = {
         opacity: 1,
     };
@@ -14,11 +14,14 @@ export default class App extends React.Component {
         const targetNode = document.getElementById('target-node');
         ReactDOM.unmountComponentAtNode(targetNode);
         targetNode.remove();
+        //清除定时器
+        clearInterval(this.timer)
     };
 
-    render() {
+
+    componentDidMount() {
         //如果在render()中设置定时器，每次定时器调用结束，就会改变state，页面重新渲染，就会再调用render()中设置状态的操作。陷入死循环。
-        setTimeout(() => {
+        setInterval(() => {
             //1.获取原状态opacity
             let {opacity} = this.state
             //2.将opacity减少0.1
@@ -27,14 +30,23 @@ export default class App extends React.Component {
             if (opacity <= 0) opacity = 1
             //4.将opcity设置回state
             this.setState({opacity})
-        }, 200)
+        }, 200);
+    }
+
+
+    // 组件将要卸载时调用
+    componentWillUnmount() {
+        //清除定时器
+        clearInterval(this.timer)
+    }
+
+    render() {
         return (
             <div>
                 <div id="target-node">
                     <h1 style={{opacity: this.state.opacity}}>Hello, World!</h1>
                     <button onClick={this.handleUnmount}>Unmount</button>
                 </div>
-
             </div>
         );
     }
